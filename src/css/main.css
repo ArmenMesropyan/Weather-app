@@ -1,0 +1,8 @@
+.logo__text::before {
+    content: '';
+    background: url('../img/logo-icon-1.svg') center center no-repeat;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: 100%;
+}
