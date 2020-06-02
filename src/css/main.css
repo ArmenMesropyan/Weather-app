@@ -4,13 +4,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: #285e7b;
+}
+
+.visually-hidden {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
 }
 
 
 /* Navigation */
 
 .logo__text {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,10 +37,11 @@ body {
     width: 60px;
     height: 65px;
     background-size: 100%;
+    position: absolute;
+    left: -80px;
     animation-name: logoImages;
     animation-duration: 5s;
     animation-iteration-count: infinite;
-    margin-right: 15px;
 }
 
 @keyframes logoImages {
@@ -59,4 +70,19 @@ body {
         background: url('../img/logo-icon-1.svg') center center no-repeat;
         background-size: 100%;
     }
+}
+
+
+/* Form */
+
+.forecast__form {
+    margin-top: 50px;
+}
+
+.forecast-form__search:focus~.icon .fa-check {
+    color: #2b8c89;
+}
+
+.forecast-form__search:focus~.icon .fa-times {
+    color: #d63636;
 }
