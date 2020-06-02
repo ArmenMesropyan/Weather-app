@@ -1,17 +1,39 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #285e7b;
+}
+
+
+/* Navigation */
+
+.logo__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 300;
+}
+
 .logo__text::before {
     content: '';
     background: url('../img/logo-icon-1.svg') center center no-repeat;
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 65px;
     background-size: 100%;
-    animation-name: logoAnimate;
+    animation-name: logoImages;
     animation-duration: 5s;
     animation-iteration-count: infinite;
-    animation-delay: .5s;
+    margin-right: 15px;
 }
 
-@keyframes logoAnimate {
+@keyframes logoImages {
     0% {
         background: url('../img/logo-icon-1.svg') center center no-repeat;
         background-size: 100%;
