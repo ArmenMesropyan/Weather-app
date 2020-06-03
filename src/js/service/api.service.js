@@ -6,10 +6,26 @@ class APIService {
         this.api = api;
     }
 
-    async getForecast(cityName) {
+    async getUserForecast({ latitude, longitude }) {
         try {
-            const resposne = await axios.get(`${this.api.url}/weather?q=${cityName}&appid=${this.api.apiKey}`);
+            const resposne = await axios.get(`${this.api.url}/weather?lat=${latitude}&lon=${longitude}&appid=${this.api.apiKey}`);
             return resposne.data;
+        } catch (error) {
+            throw new Error('Error response');
+        }
+    }
+
+    async getForecast(info) {
+        try {
+            let response;
+
+            if (info.latitude) {
+                response = await this.getUserForecast(info);
+                return response;
+            }
+            response = await axios.get(`${this.api.url}/weather?q=${info}&appid=${this.api.apiKey}`);
+
+            return response.data;
         } catch (error) {
             return Promise.reject(error);
         }

@@ -33,9 +33,9 @@ class Forecast {
         return res;
     }
 
-    async getForecast(city) {
+    async getForecast(info) {
         try {
-            const forecast = await this.api.getForecast(city);
+            const forecast = await this.api.getForecast(info);
             const result = this.serializeForecast(forecast);
             return result;
         } catch (error) {
