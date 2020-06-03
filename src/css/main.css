@@ -16,6 +16,14 @@ body {
     margin: -1px;
 }
 
+.forecast {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* Navigation */
 
@@ -85,4 +93,47 @@ body {
 
 .forecast-form__search:focus~.icon .fa-times {
     color: #d63636;
+}
+
+
+/* Forecast Data */
+
+.forecast__data {
+    margin-top: 50px;
+    min-width: 350px;
+    border-radius: 25px;
+}
+
+.forecast-data__item {
+    text-align: center;
+}
+
+.country-info {
+    display: flex;
+    align-items: center;
+    background-color: rgb(62, 118, 148);
+    color: #fff;
+    border-radius: 15px;
+    padding-left: 15px;
+}
+
+.country-info__name {
+    font-size: 25px;
+    font-weight: 300;
+}
+
+.weather-info ul {
+    margin: 0;
+    list-style: none;
+}
+
+.weather-info__main {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-left: 15px;
+}
+
+.weather-info__img {
+    margin-right: 20px;
 }
