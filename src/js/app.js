@@ -11,6 +11,10 @@ function showUserForecast() {
 }
 
 async function onInputChange(input) {
+    if (!input.value) {
+        showUserForecast();
+        return;
+    }
     forecastUI.init(forecast.getForecast(input.value));
 }
 
