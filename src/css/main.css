@@ -104,6 +104,20 @@ body {
     border-radius: 25px;
 }
 
+.forecast-data .card-content {
+    padding: 0;
+    padding-bottom: 1.5rem;
+}
+
+.card-content~.forecast-data__basic {
+    display: none;
+}
+
+.card-content::before {
+    content: '';
+    background: url('../img/flag.png')
+}
+
 .forecast-data__item {
     text-align: center;
 }

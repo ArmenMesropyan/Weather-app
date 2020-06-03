@@ -61,28 +61,33 @@ class ForecastUI {
         this.field.removeChild(element);
     }
 
+    clearContainer() {
+        this.container.classList.remove('card-content');
+        this.container.innerHTML = '';
+    }
+
     showError() {
         this.clearIcons();
-        this.field.insertAdjacentHTML('afterbegin', ForecastUI.IconTemplate(false));
+        this.clearContainer();
+        this.field.insertAdjacentHTML('beforeend', ForecastUI.IconTemplate(false));
     }
 
     showForecast(forecast) {
         this.clearIcons();
-        this.field.insertAdjacentHTML('afterbegin', ForecastUI.IconTemplate(true));
-        this.container.innerHTML = '';
+        this.clearContainer();
+        this.container.classList.add('card-content');
+        this.field.insertAdjacentHTML('beforeend', ForecastUI.IconTemplate(true));
         this.container.insertAdjacentHTML('afterbegin', ForecastUI.forecastTemplate(forecast));
     }
 
-    init(forecast) {
-        this.lastSearch = forecast;
-        forecast
-            .then((res) => {
-                this.showForecast(res);
-            })
-            .catch((error) => {
-                this.showError();
-                return Promise.reject(error);
-            });
+    async init(forecast) {
+        try {
+            const res = await forecast;
+            this.showForecast(res);
+        } catch (error) {
+            console.log(error);
+            this.showError();
+        }
     }
 }
 
