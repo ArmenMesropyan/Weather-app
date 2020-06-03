@@ -34,10 +34,13 @@ class Forecast {
     }
 
     async getForecast(city) {
-        const forecast = await this.api.getForecast(city);
-        const result = this.serializeForecast(forecast);
-
-        return result;
+        try {
+            const forecast = await this.api.getForecast(city);
+            const result = this.serializeForecast(forecast);
+            return result;
+        } catch (error) {
+            return Promise.reject(error);
+        }
     }
 }
 
