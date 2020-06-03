@@ -21,6 +21,7 @@ class Forecast {
             visibility,
             sys,
         } = this.lastForecast;
+        console.log(main);
         const res = {
             id,
             name,
@@ -31,6 +32,7 @@ class Forecast {
             pressure: Math.round(main.pressure * 0.00750063755419211 * 100),
             visibility: visibility / 1000,
             country: sys.country,
+            countryImg: `https://www.countryflags.io/${sys.country}/flat/64.png`,
         };
 
         this.lastForecast = res;
@@ -46,6 +48,7 @@ class Forecast {
     async getForecast(city) {
         const cityId = this.getCityIdByCityName(city);
         await this.getForecastById(cityId);
+        console.log(this.serializeForecast());
         return this.serializeForecast();
     }
 }
