@@ -6,9 +6,9 @@ class APIService {
         this.api = api;
     }
 
-    async getForecast(cityId) {
+    async getForecast(cityName) {
         try {
-            const resposne = await axios.get(`${this.api.url}/weather?id=${cityId}&appid=${this.api.apiKey}`);
+            const resposne = await axios.get(`${this.api.url}/weather?q=${cityName}&appid=${this.api.apiKey}`);
             return resposne.data;
         } catch (error) {
             return Promise.reject(error);

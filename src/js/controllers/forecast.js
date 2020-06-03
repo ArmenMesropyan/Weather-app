@@ -1,18 +1,12 @@
 import apiService from '../service/api.service';
-import cityData from '../data/city.list.min.json';
 
 class Forecast {
-    constructor(api, cities) {
+    constructor(api) {
         this.api = api;
-        this.cities = cities;
         this.lastForecast = null;
     }
 
-    getCityIdByCityName(cityName) {
-        return this.cities.find((city) => city.name === cityName).id;
-    }
-
-    serializeForecast() {
+    serializeForecast(forecast) {
         const {
             name,
             id,
@@ -20,8 +14,8 @@ class Forecast {
             main,
             visibility,
             sys,
-        } = this.lastForecast;
-        console.log(main);
+        } = forecast;
+
         const res = {
             id,
             name,
@@ -39,20 +33,14 @@ class Forecast {
         return res;
     }
 
-    async getForecastById(id) {
-        const response = await this.api.getForecast(id);
-        this.lastForecast = response;
-        return response;
-    }
-
     async getForecast(city) {
-        const cityId = this.getCityIdByCityName(city);
-        await this.getForecastById(cityId);
-        console.log(this.serializeForecast());
-        return this.serializeForecast();
+        const forecast = await this.api.getForecast(city);
+        const result = this.serializeForecast(forecast);
+
+        return result;
     }
 }
 
-const forecast = new Forecast(apiService, cityData);
+const forecast = new Forecast(apiService);
 
 export default forecast;
