@@ -8,7 +8,7 @@ class APIService {
 
     async getUserForecast({ latitude, longitude }) {
         try {
-            const resposne = await axios.get(`${this.api.url}/weather?lat=${latitude}&lon=${longitude}&appid=${this.api.apiKey}`);
+            const resposne = await axios.get(`${this.api.url}/forecast?lat=${latitude}&lon=${longitude}&appid=${this.api.apiKey}`);
             return resposne.data;
         } catch (error) {
             throw new Error('Error response');
@@ -23,7 +23,8 @@ class APIService {
                 response = await this.getUserForecast(info);
                 return response;
             }
-            response = await axios.get(`${this.api.url}/weather?q=${info}&appid=${this.api.apiKey}`);
+            response = await axios.get(`${this.api.url}/forecast?q=${info}&appid=${this.api.apiKey}`);
+            console.log('response: ', response);
 
             return response.data;
         } catch (error) {

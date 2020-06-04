@@ -77,12 +77,14 @@ class ForecastUI {
         this.clearContainer();
         this.container.classList.add('card-content');
         this.field.insertAdjacentHTML('beforeend', ForecastUI.IconTemplate(true));
+
         this.container.insertAdjacentHTML('afterbegin', ForecastUI.forecastTemplate(forecast));
     }
 
     async init(forecast) {
         try {
             const res = await forecast;
+            console.log('res: ', res);
             this.showForecast(res);
         } catch (error) {
             console.log(error);
