@@ -1,3 +1,5 @@
+import generateSlider from '../plugins';
+
 class ForecastUI {
     constructor(field, container) {
         this.field = document.querySelector(field);
@@ -23,33 +25,35 @@ class ForecastUI {
         countryImg,
     }) {
         return `
-          <li class="forecast-data__item country-info media">
-              <figure class="country-info__icon media-left">
-                  <img src="${countryImg}">
-              </figure>
-              <p class="country-info__name media-content">
-                  ${name}
-              </p>
-          </li>
-          <li class="forecast-data__item weather-info content">
-              <ul class="weather-info__list">
-                  <li class="weather-info__main">
-                      <img src="${img}" alt="${weather}" class="weather-info__img">
-                      <p class="weather-info__text">${weather}</p>
-                  </li>
-                  <li class="weather-info__temperature">
-                      <p class="weather-info__temperature-text">Temperature: ${temperature} &#176 C</p>
-                  </li>
-                  <li class="weather-info__humidity">
-                      <p class="weather-info__humidity-text">Humidity: ${humidity}</p>
-                  </li>
-                  <li class="weather-info__pressure">
-                      <p class="weather-info__pressure-text">Pressure: ${pressure} mmHg</p>
-                  </li>
-                  <li class="weather-info__date">
-                      <p class="weather-info__date-text">Date: ${date}</p>
-                  </li>
-              </ul>
+          <li>
+            <div class="forecast-data__item country-info media">
+                <figure class="country-info__icon media-left">
+                    <img src="${countryImg}">
+                </figure>
+                <p class="country-info__name media-content">
+                    ${name}
+                </p>
+            </div>
+            <div class="forecast-data__item weather-info content">
+                <ul class="weather-info__list">
+                    <li class="weather-info__main">
+                        <img src="${img}" alt="${weather}" class="weather-info__img">
+                        <p class="weather-info__text">${weather}</p>
+                    </li>
+                    <li class="weather-info__temperature">
+                        <p class="weather-info__temperature-text">Temperature: ${temperature} &#176 C</p>
+                    </li>
+                    <li class="weather-info__humidity">
+                        <p class="weather-info__humidity-text">Humidity: ${humidity}</p>
+                    </li>
+                    <li class="weather-info__pressure">
+                        <p class="weather-info__pressure-text">Pressure: ${pressure} mmHg</p>
+                    </li>
+                    <li class="weather-info__date">
+                        <p class="weather-info__date-text">Date: ${date}</p>
+                    </li>
+                </ul>
+            </div>
           </li>
         `;
     }
@@ -80,6 +84,7 @@ class ForecastUI {
         forecast.forEach((item) => {
             this.container.insertAdjacentHTML('afterbegin', ForecastUI.forecastTemplate(item));
         });
+        generateSlider();
     }
 
     async init(forecast) {

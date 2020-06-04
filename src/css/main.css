@@ -100,7 +100,7 @@ body {
 
 .forecast__data {
     margin-top: 50px;
-    min-width: 350px;
+    width: 350px;
     border-radius: 25px;
 }
 
@@ -168,6 +168,6 @@ body {
         left: -65px;
     }
     .forecast__data {
-        min-width: 300px;
+        width: 300px;
     }
 }
