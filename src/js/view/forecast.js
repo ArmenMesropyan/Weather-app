@@ -19,7 +19,7 @@ class ForecastUI {
         temperature,
         humidity,
         pressure,
-        visibility,
+        date,
         countryImg,
     }) {
         return `
@@ -38,7 +38,7 @@ class ForecastUI {
                       <p class="weather-info__text">${weather}</p>
                   </li>
                   <li class="weather-info__temperature">
-                      <p class="weather-info__temperature-text">Temperature: ${temperature} &#176</p>
+                      <p class="weather-info__temperature-text">Temperature: ${temperature} &#176 C</p>
                   </li>
                   <li class="weather-info__humidity">
                       <p class="weather-info__humidity-text">Humidity: ${humidity}</p>
@@ -46,8 +46,8 @@ class ForecastUI {
                   <li class="weather-info__pressure">
                       <p class="weather-info__pressure-text">Pressure: ${pressure} mmHg</p>
                   </li>
-                  <li class="weather-info__visibility">
-                      <p class="weather-info__visibility-text">Visibility: ${visibility} Km</p>
+                  <li class="weather-info__date">
+                      <p class="weather-info__date-text">Date: ${date}</p>
                   </li>
               </ul>
           </li>
@@ -77,14 +77,15 @@ class ForecastUI {
         this.clearContainer();
         this.container.classList.add('card-content');
         this.field.insertAdjacentHTML('beforeend', ForecastUI.IconTemplate(true));
-
-        this.container.insertAdjacentHTML('afterbegin', ForecastUI.forecastTemplate(forecast));
+        forecast.forEach((item) => {
+            this.container.insertAdjacentHTML('afterbegin', ForecastUI.forecastTemplate(item));
+        });
     }
 
     async init(forecast) {
         try {
             const res = await forecast;
-            console.log('res: ', res);
+            console.log('res ', res);
             this.showForecast(res);
         } catch (error) {
             console.log(error);
