@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather application</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet" />
+<link href="./style.css" rel="stylesheet"></head>
+
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav main-nav">
+            <ul class="main-nav__list">
+                <li class="main-nav__item logo">
+                    <p class="logo__text">
+                        Weather
+                    </p>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="forecast">
+        <section class="forecast__form forecast-form">
+            <form class="forecast-form__form" id="searchForm">
+                <fieldset class="forecast-form__field field control has-icons-left has-icons-right">
+                    <label for="country-search" class="visually-hidden">Search geolocation</label>
+                    <input type="text" id="country-search" name="country-search" placeholder="Search geolocation" class="forecast-form__search input is-info" />
+
+                    <span class="icon is-small is-left"><i class="fas fa-cloud"></i></span>
+                </fieldset>
+
+            </form>
+        </section>
+        <section class="forecast__data forecast-data card">
+            <ul class="forecast-data__list"></ul>
+            <ul class="forecast-data__basic">
+                <li class="forecast-data__item country-info media">
+                    <figure class="country-info__icon media-left">
+                        <img src="img/flag.png" width="64">
+                    </figure>
+                    <p class="country-info__name media-content">
+                        Select Country
+                    </p>
+                </li>
+                <li class="forecast-data__item weather-info content" aria-hidden="true">
+                    <ul class="weather-info__list">
+                        <li class="weather-info__main">
+                            <img src="https://openweathermap.org/img/w/02n.png" alt="weather" class="weather-info__img">
+                            <p class="weather-info__text">Weather</p>
+                        </li>
+                        <li class="weather-info__temperature">
+                            <p class="weather-info__temperature-text">Temperature: * &#176</p>
+                        </li>
+                        <li class="weather-info__humidity">
+                            <p class="weather-info__humidity-text">Humidity: *%</p>
+                        </li>
+                        <li class="weather-info__pressure">
+                            <p class="weather-info__pressure-text">Pressure: * mmHg</p>
+                        </li>
+                        <li class="weather-info__visibility">
+                            <p class="weather-info__visibility-text">Visibility: * Km</p>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+<script type="text/javascript" src="polyfill.ddcff3a6de7a4fe3c18b.js"></script><script type="text/javascript" src="app.ddcff3a6de7a4fe3c18b.js"></script></body>
+
+</html>
