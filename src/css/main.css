@@ -156,3 +156,18 @@ body {
 .weather-info__img {
     margin-right: 20px;
 }
+
+
+/* Media queries */
+
+@media screen and (max-width: 450px) {
+    .forecast-form__search {
+        padding: 0 1rem 0 2.5rem;
+    }
+    .logo__text::before {
+        left: -65px;
+    }
+    .forecast__data {
+        min-width: 300px;
+    }
+}
