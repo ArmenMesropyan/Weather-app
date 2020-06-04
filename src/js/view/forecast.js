@@ -72,25 +72,37 @@ class ForecastUI {
 
     showError() {
         this.clearIcons();
-        this.clearContainer();
         this.field.insertAdjacentHTML('beforeend', ForecastUI.IconTemplate(false));
+    }
+
+    clearSlider() {
+        const parent = this.container.closest('section');
+        const controller = parent.querySelector('.tns-controls');
+        const navigation = parent.querySelector('.tns-nav');
+
+        if (!controller) return;
+
+        controller.parentElement.removeChild(controller);
+        navigation.parentElement.removeChild(navigation);
     }
 
     showForecast(forecast) {
         this.clearIcons();
         this.clearContainer();
+        this.clearSlider();
         this.container.classList.add('card-content');
         this.field.insertAdjacentHTML('beforeend', ForecastUI.IconTemplate(true));
+
         forecast.forEach((item) => {
             this.container.insertAdjacentHTML('afterbegin', ForecastUI.forecastTemplate(item));
         });
         generateSlider();
     }
 
+
     async init(forecast) {
         try {
             const res = await forecast;
-            console.log('res ', res);
             this.showForecast(res);
         } catch (error) {
             console.log(error);

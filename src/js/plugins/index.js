@@ -3,7 +3,8 @@ import { tns } from 'tiny-slider/src/tiny-slider';
 import 'tiny-slider/dist/tiny-slider.css';
 
 export default function generateSlider() {
-    tns({
+    const slider = tns({
         container: '.my-slider',
     });
+    return slider;
 }
