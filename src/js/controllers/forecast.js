@@ -7,7 +7,6 @@ class Forecast {
     }
 
     serializeForecast(forecast) {
-        console.log('forecast: ', forecast);
         const {
             city: { name, id, country },
         } = forecast;
@@ -20,7 +19,6 @@ class Forecast {
         };
 
         const res = forecast.list.map(({ main, weather: [weatherInfo], dt_txt: date }) => ({
-            ...data,
             date,
             weather: weatherInfo.main,
             img: `https://openweathermap.org/img/w/${weatherInfo.icon}.png`,
@@ -30,7 +28,10 @@ class Forecast {
         }));
 
         this.lastForecast = res;
-        return res;
+        return {
+            list: res,
+            data,
+        };
     }
 
     async getForecast(info) {

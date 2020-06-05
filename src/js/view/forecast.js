@@ -14,18 +14,8 @@ class ForecastUI {
         `;
     }
 
-    static forecastTemplate({
-        name,
-        weather,
-        img,
-        temperature,
-        humidity,
-        pressure,
-        date,
-        countryImg,
-    }) {
+    static forecastInfoTemplate({ countryImg, name }) {
         return `
-          <li>
             <div class="forecast-data__item country-info media">
                 <figure class="country-info__icon media-left">
                     <img src="${countryImg}">
@@ -34,6 +24,19 @@ class ForecastUI {
                     ${name}
                 </p>
             </div>
+        `;
+    }
+
+    static forecastTemplate({
+        weather,
+        img,
+        temperature,
+        humidity,
+        pressure,
+        date,
+    }) {
+        return `
+          <li>
             <div class="forecast-data__item weather-info content">
                 <ul class="weather-info__list">
                     <li class="weather-info__main">
@@ -68,6 +71,8 @@ class ForecastUI {
     clearContainer() {
         this.container.classList.remove('card-content');
         this.container.innerHTML = '';
+        const infoElem = this.container.closest('section').querySelector('.country-info');
+        if (infoElem) infoElem.parentElement.removeChild(infoElem);
     }
 
     showError() {
@@ -86,14 +91,17 @@ class ForecastUI {
         navigation.parentElement.removeChild(navigation);
     }
 
-    showForecast(forecast) {
+    showForecast({ list, data }) {
+        console.log('data: ', data);
+        console.log('list: ', list);
         this.clearIcons();
         this.clearContainer();
         this.clearSlider();
         this.container.classList.add('card-content');
         this.field.insertAdjacentHTML('beforeend', ForecastUI.IconTemplate(true));
 
-        forecast.forEach((item) => {
+        this.container.insertAdjacentHTML('beforebegin', ForecastUI.forecastInfoTemplate(data));
+        list.forEach((item) => {
             this.container.insertAdjacentHTML('afterbegin', ForecastUI.forecastTemplate(item));
         });
         generateSlider();
