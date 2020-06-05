@@ -92,8 +92,6 @@ class ForecastUI {
     }
 
     showForecast({ list, data }) {
-        console.log('data: ', data);
-        console.log('list: ', list);
         this.clearIcons();
         this.clearContainer();
         this.clearSlider();
@@ -113,7 +111,6 @@ class ForecastUI {
             const res = await forecast;
             this.showForecast(res);
         } catch (error) {
-            console.log(error);
             this.showError();
         }
     }

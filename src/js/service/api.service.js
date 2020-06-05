@@ -24,7 +24,6 @@ class APIService {
                 return response;
             }
             response = await axios.get(`${this.api.url}/forecast?q=${info}&appid=${this.api.apiKey}`);
-            console.log('response: ', response);
 
             return response.data;
         } catch (error) {

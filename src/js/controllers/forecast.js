@@ -1,4 +1,5 @@
 import apiService from '../service/api.service';
+import formatDate from '../helpers/date';
 
 class Forecast {
     constructor(api) {
@@ -19,7 +20,7 @@ class Forecast {
         };
 
         const res = forecast.list.map(({ main, weather: [weatherInfo], dt_txt: date }) => ({
-            date,
+            date: formatDate(date),
             weather: weatherInfo.main,
             img: `https://openweathermap.org/img/w/${weatherInfo.icon}.png`,
             temperature: Math.round(main.temp - 273),
@@ -29,7 +30,7 @@ class Forecast {
 
         this.lastForecast = res;
         return {
-            list: res,
+            list: res.reverse(),
             data,
         };
     }
